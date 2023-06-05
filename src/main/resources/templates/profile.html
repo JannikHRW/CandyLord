@@ -22,8 +22,8 @@
             <div id="profilePhotoCarousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div data-th-each="photo,is : ${profile.photos}" class="carousel-item" data-th-classappend="${is.first} ? active">
-                        <img class="d-block w-100" th:src="@{/api/photos/{id}(id=${photo.name})}">
-                        <p th:text="${photo.name}"></p>
+                        <img class="d-block w-100" th:src="@{/api/photos/{id}(id=${photo})}">
+                        <p th:text="${photo}"></p>
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#profilePhotoCarousel" data-bs-slide="prev">
@@ -40,17 +40,17 @@
             <div class="mb-3">
                 <label for="nicknameInput" class="form-label">Nickname</label>
                 <input type="text" data-th-field="*{nickname}" id="nicknameInput"
-                       class="form-control">
+                       class="form-control" th:readonly="${not editable}">
             </div>
             <div class="mb-3">
                 <label for="hornlengthInput" class="form-label">Hornlänge</label>
                 <input type="text" data-th-field="*{hornlength}" id="hornlengthInput"
-                       class="form-control">
+                       class="form-control" th:readonly="${not editable}">
             </div>
 
                 <div class="mb-3">
                     <label for="genderInput" class="form-label">Geschlecht</label>
-                    <select data-th-field="*{gender}" id="genderInput">
+                    <select data-th-field="*{gender}" id="genderInput" th:disabled="${not editable}">
                         <option th:value="1" th:text="FEE"></option>
                         <option th:value="2" th:text="MA"></option>
                     </select>
@@ -58,7 +58,7 @@
 
             <div class="mb-3">
                 <label for="genderInput" class="form-label">Findet attraktiv</label>
-                <select data-th-field="*{attractedToGender}" id="attractedToGenderInput">
+                <select data-th-field="*{attractedToGender}" id="attractedToGenderInput" th:disabled="${not editable}">
                     <option th:value="null" th:text="None"></option>
                     <option th:value="1" th:text="FEE"></option>
                     <option th:value="2" th:text="MA"></option>
@@ -68,14 +68,14 @@
             <div class="mb-3">
                 <label for="birthdateInput" class="form-label">Geburtsdatum</label>
                 <input type="date" data-th-field="*{birthdate}" id="birthdateInput"
-                       class="form-control">
+                       class="form-control" th:readonly="${not editable}">
             </div>
 
             <div class="mb-3">
                 Zuletzt gesehen: <span data-th-text="*{lastseen}">LAST-SEEN</span>
             </div>
 
-            <button type="submit" class="btn btn-primary">Speichern</button>
+            <button type="submit" class="btn btn-primary" th:if="${editable}">Speichern</button>
         </form>
     </div>
 </div>

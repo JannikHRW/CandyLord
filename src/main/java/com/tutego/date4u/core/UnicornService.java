@@ -33,4 +33,8 @@ public class UnicornService {
         profileRepository.save(profile);
         unicornRepository.save(unicorn);
     }
+
+    public Unicorn findByProfile(Profile profile) {
+        return unicornRepository.findByProfile(profile);
+    }
 }

@@ -22,10 +22,19 @@ public class ProfileFormData {
     private LocalDateTime lastseen;
 
     public ProfileFormData() { }
-    public ProfileFormData( long id, String nickname, LocalDate birthdate, int hornlength, int gender, Integer attractedToGender, String description, LocalDateTime lastseen, List<String> photos ) {
+
+    public ProfileFormData(Long id, String nickname, LocalDate birthdate, int hornlength, int gender, Integer attractedToGender, String description, LocalDateTime lastseen, List<String> photos) {
+        this.id = id;
+        this.nickname = nickname;
+        this.birthdate = birthdate;
+        this.hornlength = hornlength;
+        this.gender = gender;
+        this.attractedToGender = attractedToGender;
+        this.description = description;
+        this.lastseen = lastseen;
         this.photos = photos;
     }
-    // + Setter + Getter + toString()
+
 
     public long getId() {
         return id;
@@ -90,14 +99,6 @@ public class ProfileFormData {
     public void setLastseen(LocalDateTime lastseen) {
         this.lastseen = lastseen;
     }
-
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//        ProfileFormData that = (ProfileFormData) o;
-//        return id == that.id && hornlength == that.hornlength && gender == that.gender && Objects.equals(nickname, that.nickname) && Objects.equals(birthdate, that.birthdate) && Objects.equals(attractedToGender, that.attractedToGender) && Objects.equals(description, that.description) && Objects.equals(lastseen, that.lastseen);
-//    }
 
     @Override
     public int hashCode() {
