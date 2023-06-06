@@ -17,13 +17,12 @@
     </nav>
 
     <div class="jumbotron">
-        <h1 class="display-4">Dein Profil</h1>
         <form data-th-object="${profile}" data-th-action="@{/save}" method="post">
+            <h1 class="display-4 text-center">Profil von [[${profile.nickname}]]</h1>
             <div id="profilePhotoCarousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div data-th-each="photo,is : ${profile.photos}" class="carousel-item" data-th-classappend="${is.first} ? active">
-                        <img class="d-block w-100" th:src="@{/api/photos/{id}(id=${photo})}">
-                        <p th:text="${photo}"></p>
+                        <img class="d-block mx-auto" th:src="@{/api/photos/{id}(id=${photo})}" style="max-width: 250px; max-height: 250px;">
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#profilePhotoCarousel" data-bs-slide="prev">
